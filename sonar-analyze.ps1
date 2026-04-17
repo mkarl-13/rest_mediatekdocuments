@@ -1,0 +1,1 @@
+sonar-scanner.bat -D"sonar.projectKey=rest_mediatekdocuments" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_9f6077144831d22e06f992e72d04b3df8ae3fdb3"

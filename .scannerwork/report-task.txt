@@ -1,0 +1,6 @@
+projectKey=rest_mediatekdocuments
+serverUrl=http://localhost:9000
+serverVersion=10.5.1.90531
+dashboardUrl=http://localhost:9000/dashboard?id=rest_mediatekdocuments
+ceTaskId=3a7a3b46-7e00-4a6d-9130-3038c39474f0
+ceTaskUrl=http://localhost:9000/api/ce/task?id=3a7a3b46-7e00-4a6d-9130-3038c39474f0
