@@ -45,6 +45,8 @@ class MyAccessBDD extends AccessBDD {
                 return $this->selectCommandesLivresDvd($champs);
             case "commandesrevues":
                 return $this->selectCommandesRevue($champs);
+            case "controleauthentification":
+                return $this->selectControleAuthentification($champs);
             case "genre" :
             case "public" :
             case "rayon" :
@@ -782,5 +784,29 @@ class MyAccessBDD extends AccessBDD {
         $requete .= "AND a.dateFinAbonnement <= DATE_ADD(CURDATE(), INTERVAL 30 DAY) ";
         $requete .= "ORDER BY a.dateFinAbonnement ASC";
         return $this->conn->queryBDD($requete);
+    }
+    
+    /**
+     * Vérifie les identifiants d'un utilisateur et renvoie son service
+     * @param array|null $champs
+     * @return array|null
+     */
+    private function selectControleAuthentification(?array $champs): ?array {
+        if (empty($champs)) {
+            return null;
+        }
+        if (!array_key_exists("login", $champs)) {
+            return null;
+        }
+        if (!array_key_exists('mdp', $champs)) {
+            return null;
+        }
+        $requete = "Select idService from utilisateur ";
+        $requete .= "where login = :login ";
+        $requete .= "and mdp = sha2(:mdp, 256) ";
+        return $this->conn->queryBDD($requete, [
+                    'login' => $champs['login'],
+                    'mdp' => $champs['mdp']
+        ]);
     }
 }
