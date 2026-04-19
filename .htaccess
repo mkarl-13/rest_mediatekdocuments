@@ -12,4 +12,5 @@ RewriteRule ^([a-zA-Z0-9_]+)/([a-zA-Z0-9]+)$ src/index.php?table=$1&id=$2 [B,L]
 RewriteCond %{REQUEST_METHOD} =DELETE
 RewriteRule ^([a-zA-Z0-9_]+)$ src/index.php?table=$1 [B,L]
 RewriteCond %{REQUEST_METHOD} =DELETE
-RewriteRule ^([a-zA-Z0-9_]+)/({.*})$ src/index.php?table=$1&champs=$2 [B,L]
+RewriteRule ^([a-zA-Z0-9_]+)/({.*})$ src/index.php?table=$1&champs=$2 [B,L] 
+RewriteRule ^$ - [R=404,L]
